@@ -1,0 +1,625 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/monitor_overlay/monitor_overlay.gd" type="Script" id=1]
+[ext_resource path="res://GUI/GUI.gd" type="Script" id=2]
+[ext_resource path="res://GUI/Theme.tres" type="Theme" id=3]
+[ext_resource path="res://GUI/style/lineedit.png" type="Texture" id=4]
+[ext_resource path="res://GUI/font/KenneyRockerSquare.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://GUI/style/panel-bg.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 5 )
+
+[node name="GUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 2 )
+
+[node name="BG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="MonitorOverlay" type="VBoxContainer" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+graph_color = Color( 0.0470588, 0.388235, 0.0196078, 1 )
+graph_height = 20
+process = true
+physics_process = true
+static_memory = true
+dynamic_memory = true
+objects = true
+resources = true
+nodes = true
+orphan_nodes = true
+objects_drawn = true
+vertices_drawn = true
+material_changes = true
+shader_changes = true
+surface_changes = true
+draw_calls_3d = true
+video_memory = true
+texture_memory = true
+vertex_memory = true
+active_objects_3d = true
+collision_pairs_3d = true
+islands_3d = true
+audio_output_latency = true
+
+[node name="Tooltip" type="PanelContainer" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -316.0
+
+[node name="Base" type="VBoxContainer" parent="Tooltip"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 309.0
+margin_bottom = 593.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="Name" type="Label" parent="Tooltip/Base"]
+margin_right = 302.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "BASE"
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/Base"]
+margin_top = 37.0
+margin_right = 302.0
+margin_bottom = 69.0
+texture = ExtResource( 4 )
+
+[node name="Description" type="Label" parent="Tooltip/Base"]
+margin_top = 73.0
+margin_right = 302.0
+margin_bottom = 208.0
+text = "your main base building
+place on an ore deposit
+cost: 0
+health: 5000
+firepower: 60/sec
+mining: 50/sec"
+
+[node name="Mine" type="VBoxContainer" parent="Tooltip"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 309.0
+margin_bottom = 593.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="Name" type="Label" parent="Tooltip/Mine"]
+margin_right = 302.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "MINE"
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/Mine"]
+margin_top = 37.0
+margin_right = 302.0
+margin_bottom = 69.0
+texture = ExtResource( 4 )
+
+[node name="Description" type="Label" parent="Tooltip/Mine"]
+margin_top = 73.0
+margin_right = 302.0
+margin_bottom = 208.0
+text = "a standard mine 
+to get ore from the ground
+the only useful one they sent
+cost: 1500
+health: 350
+mining: 50/sec"
+
+[node name="Tower" type="VBoxContainer" parent="Tooltip"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 309.0
+margin_bottom = 593.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="Name" type="Label" parent="Tooltip/Tower"]
+margin_right = 302.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "TOWER"
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/Tower"]
+margin_top = 37.0
+margin_right = 302.0
+margin_bottom = 69.0
+texture = ExtResource( 4 )
+
+[node name="Description" type="Label" parent="Tooltip/Tower"]
+margin_top = 73.0
+margin_right = 302.0
+margin_bottom = 231.0
+text = "a defence tower
+i don't know who would need
+it on this wasteland, 
+but yeah why not
+cost: 1000
+health: 500
+firepower: 30/sec"
+
+[node name="Wall" type="VBoxContainer" parent="Tooltip"]
+visible = false
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 309.0
+margin_bottom = 593.0
+rect_min_size = Vector2( 250, 0 )
+
+[node name="Name" type="Label" parent="Tooltip/Wall"]
+margin_right = 302.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
+text = "WALL"
+
+[node name="TextureRect" type="TextureRect" parent="Tooltip/Wall"]
+margin_top = 37.0
+margin_right = 302.0
+margin_bottom = 69.0
+texture = ExtResource( 4 )
+
+[node name="Description" type="Label" parent="Tooltip/Wall"]
+margin_top = 73.0
+margin_right = 302.0
+margin_bottom = 208.0
+text = "a wall
+can be used to get some shade
+i suppose it's also 
+good against wind
+cost: 750
+health: 250"
+
+[node name="Panels" type="HBoxContainer" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -39.0
+alignment = 1
+
+[node name="TimeMenu" type="PanelContainer" parent="Panels"]
+margin_right = 306.0
+margin_bottom = 40.0
+
+[node name="Items" type="HBoxContainer" parent="Panels/TimeMenu"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 299.0
+margin_bottom = 33.0
+
+[node name="Label" type="Label" parent="Panels/TimeMenu/Items"]
+margin_top = 3.0
+margin_right = 66.0
+margin_bottom = 23.0
+text = "Speed:"
+
+[node name="Speed" type="Label" parent="Panels/TimeMenu/Items"]
+margin_left = 70.0
+margin_top = 3.0
+margin_right = 144.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "NORMAL"
+align = 1
+
+[node name="S0" type="Button" parent="Panels/TimeMenu/Items"]
+margin_left = 148.0
+margin_right = 220.0
+margin_bottom = 26.0
+text = "PAUSE"
+
+[node name="S1" type="Button" parent="Panels/TimeMenu/Items"]
+visible = false
+margin_left = 243.0
+margin_right = 305.0
+margin_bottom = 26.0
+text = "SLOW"
+
+[node name="S2" type="Button" parent="Panels/TimeMenu/Items"]
+margin_left = 224.0
+margin_right = 292.0
+margin_bottom = 26.0
+text = "START"
+
+[node name="S3" type="Button" parent="Panels/TimeMenu/Items"]
+visible = false
+margin_left = 399.0
+margin_right = 457.0
+margin_bottom = 26.0
+text = "FAST"
+
+[node name="ResourceInfo" type="PanelContainer" parent="Panels"]
+margin_left = 310.0
+margin_right = 946.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="Items" type="HBoxContainer" parent="Panels/ResourceInfo"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 629.0
+margin_bottom = 33.0
+
+[node name="Label" type="Label" parent="Panels/ResourceInfo/Items"]
+margin_top = 3.0
+margin_right = 46.0
+margin_bottom = 23.0
+text = "Day: "
+
+[node name="Day" type="Label" parent="Panels/ResourceInfo/Items"]
+margin_left = 50.0
+margin_top = 3.0
+margin_right = 311.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "1"
+align = 1
+
+[node name="Label2" type="Label" parent="Panels/ResourceInfo/Items"]
+margin_left = 315.0
+margin_top = 3.0
+margin_right = 357.0
+margin_bottom = 23.0
+text = "Ore:"
+
+[node name="Ore" type="Label" parent="Panels/ResourceInfo/Items"]
+margin_left = 361.0
+margin_top = 3.0
+margin_right = 622.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "10000"
+align = 1
+
+[node name="BaseHP" type="PanelContainer" parent="Panels"]
+visible = false
+margin_left = 374.0
+margin_right = 744.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="Items" type="HBoxContainer" parent="Panels/BaseHP"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 363.0
+margin_bottom = 33.0
+
+[node name="Label" type="Label" parent="Panels/BaseHP/Items"]
+margin_top = 3.0
+margin_right = 54.0
+margin_bottom = 23.0
+text = "BASE:"
+
+[node name="Bar" type="ProgressBar" parent="Panels/BaseHP/Items"]
+margin_left = 58.0
+margin_right = 356.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+max_value = 5000.0
+step = 1.0
+value = 5000.0
+
+[node name="BuildMenu" type="PanelContainer" parent="Panels"]
+margin_left = 950.0
+margin_right = 1024.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Button" type="HBoxContainer" parent="Panels/BuildMenu"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 67.0
+margin_bottom = 33.0
+alignment = 1
+
+[node name="Base" type="Button" parent="Panels/BuildMenu/Button"]
+margin_right = 60.0
+margin_bottom = 26.0
+shortcut_in_tooltip = false
+text = "BASE"
+
+[node name="Mine" type="Button" parent="Panels/BuildMenu/Button"]
+visible = false
+margin_left = 64.0
+margin_right = 120.0
+margin_bottom = 26.0
+shortcut_in_tooltip = false
+text = "Mine"
+
+[node name="Tower" type="Button" parent="Panels/BuildMenu/Button"]
+visible = false
+margin_left = 124.0
+margin_right = 196.0
+margin_bottom = 26.0
+shortcut_in_tooltip = false
+text = "Tower"
+
+[node name="Wall" type="Button" parent="Panels/BuildMenu/Button"]
+visible = false
+margin_left = 200.0
+margin_right = 262.0
+margin_bottom = 26.0
+shortcut_in_tooltip = false
+text = "Wall"
+
+[node name="Menus" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Main" type="PanelContainer" parent="Menus"]
+margin_left = 436.0
+margin_top = 214.0
+margin_right = 588.0
+margin_bottom = 386.0
+
+[node name="Items" type="VBoxContainer" parent="Menus/Main"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 145.0
+margin_bottom = 165.0
+
+[node name="Continue" type="Button" parent="Menus/Main/Items"]
+visible = false
+margin_top = 29.0
+margin_right = 199.0
+margin_bottom = 55.0
+text = "Continue"
+
+[node name="Play" type="Button" parent="Menus/Main/Items"]
+margin_right = 138.0
+margin_bottom = 26.0
+text = "new game"
+
+[node name="Howto" type="Button" parent="Menus/Main/Items"]
+margin_top = 30.0
+margin_right = 138.0
+margin_bottom = 56.0
+text = "how to play"
+
+[node name="Sound" type="CheckButton" parent="Menus/Main/Items"]
+margin_top = 60.0
+margin_right = 138.0
+margin_bottom = 98.0
+pressed = true
+text = "Sound"
+align = 1
+icon_align = 1
+
+[node name="Info" type="Button" parent="Menus/Main/Items"]
+margin_top = 102.0
+margin_right = 138.0
+margin_bottom = 128.0
+text = "Info"
+
+[node name="Quit" type="Button" parent="Menus/Main/Items"]
+margin_top = 132.0
+margin_right = 138.0
+margin_bottom = 158.0
+text = "Exit"
+
+[node name="InfoPopup" type="AcceptDialog" parent="Menus"]
+margin_left = 273.0
+margin_top = 150.0
+margin_right = 750.0
+margin_bottom = 450.0
+window_title = "Info"
+dialog_text = "THIS GAME WAS MADE foR LUdum dare #50 compo 
+in 48 hours by mikouaji, please rate :>
+
+hope you like it, my other stuff is on my itch:
+www.mikouaji.itch.io
+
+Font used:
+Kenney FUTURE narrow: www.kenney.nl
+
+MUSIC tool:
+beepbox.co"
+
+[node name="HowtoPopup" type="AcceptDialog" parent="Menus"]
+margin_left = 225.0
+margin_top = 92.0
+margin_right = 799.0
+margin_bottom = 507.0
+window_title = "how to play"
+dialog_text = "PLACE BUILDINGS USING YOUR MOUSE
+CHOOSE A BUILDING FROM THE BOTTOM RIGHT MENU
+LEFT MOUSE BUTTON TO PLACE
+MIDDLE MOUSE BUTTON or TAB TO SPIN
+
+TO MOVE AROUND THE MAP USE WASD OR ARROW KEYS,
+YOU CAN ALSO DRAG WITH RIGHT MOUSE BUTTON
+ZOOM USING THE MOUSE SCROLL oR PAGE up/PAGE DOWN KEYS
+
+STOP/START GAME TIME WITH THE BOTTOM LEFT MENU 
+
+USE ESCAPE KEY TO GO TO PAUSE MENU
+
+BIGGER ORE VEINS HAVE MORE UNITS OF ORE
+
+NOW GO GET THAT ORE !"
+
+[node name="NewGame" type="PanelContainer" parent="Menus"]
+visible = false
+margin_left = 505.0
+margin_top = 293.0
+margin_right = 519.0
+margin_bottom = 307.0
+
+[node name="Items" type="VBoxContainer" parent="Menus/NewGame"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 235.0
+margin_bottom = 141.0
+
+[node name="Label" type="Label" parent="Menus/NewGame/Items"]
+margin_right = 228.0
+margin_bottom = 20.0
+text = "Sector name (seed):"
+
+[node name="Seed" type="LineEdit" parent="Menus/NewGame/Items"]
+margin_top = 24.0
+margin_right = 228.0
+margin_bottom = 54.0
+text = "LudumDare 50"
+max_length = 12
+context_menu_enabled = false
+clear_button_enabled = true
+
+[node name="Label2" type="Label" parent="Menus/NewGame/Items"]
+margin_top = 58.0
+margin_right = 228.0
+margin_bottom = 78.0
+text = "Sector size:"
+
+[node name="Size" type="OptionButton" parent="Menus/NewGame/Items"]
+margin_top = 82.0
+margin_right = 228.0
+margin_bottom = 104.0
+
+[node name="Buttons" type="HBoxContainer" parent="Menus/NewGame/Items"]
+margin_top = 108.0
+margin_right = 228.0
+margin_bottom = 134.0
+
+[node name="Back" type="Button" parent="Menus/NewGame/Items/Buttons"]
+margin_right = 60.0
+margin_bottom = 26.0
+text = "Back"
+
+[node name="Start" type="Button" parent="Menus/NewGame/Items/Buttons"]
+margin_left = 64.0
+margin_right = 228.0
+margin_bottom = 26.0
+text = "Start new game"
+
+[node name="AttackInfo" type="AcceptDialog" parent="Menus"]
+margin_left = 300.0
+margin_top = 161.0
+margin_right = 724.0
+margin_bottom = 438.0
+window_title = "Message incoming"
+dialog_text = "NEW transmission:
+\"This is the CREW from sector #t76n3wq,
+these creatures are attacking our base!
+there are hundreds of them! 
+escape if you can!
+i don't know if anyone can survive this!
+They are HERE ... $#%##$%... AAHHH\"
+...
+...
+Transmission LOST"
+
+[node name="GameOver" type="PanelContainer" parent="Menus"]
+visible = false
+margin_left = 505.0
+margin_top = 293.0
+margin_right = 519.0
+margin_bottom = 307.0
+
+[node name="Items" type="VBoxContainer" parent="Menus/GameOver"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 295.0
+margin_bottom = 213.0
+alignment = 1
+
+[node name="Label" type="Label" parent="Menus/GameOver/Items"]
+margin_right = 288.0
+margin_bottom = 20.0
+text = "GAME OVER!"
+align = 1
+
+[node name="Label2" type="Label" parent="Menus/GameOver/Items"]
+margin_top = 24.0
+margin_right = 288.0
+margin_bottom = 44.0
+text = "You have survived"
+align = 1
+
+[node name="Days" type="Label" parent="Menus/GameOver/Items"]
+margin_top = 48.0
+margin_right = 288.0
+margin_bottom = 68.0
+text = "67 days!"
+align = 1
+
+[node name="Label3" type="Label" parent="Menus/GameOver/Items"]
+margin_top = 72.0
+margin_right = 288.0
+margin_bottom = 92.0
+text = "But now your time has come :<"
+align = 1
+
+[node name="Label4" type="Label" parent="Menus/GameOver/Items"]
+margin_top = 96.0
+margin_right = 288.0
+margin_bottom = 116.0
+text = "No restart button, sorry :<"
+align = 1
+
+[node name="Howto" type="Button" parent="Menus/GameOver/Items"]
+margin_top = 120.0
+margin_right = 288.0
+margin_bottom = 146.0
+text = "how to play"
+
+[node name="Info" type="Button" parent="Menus/GameOver/Items"]
+margin_top = 150.0
+margin_right = 288.0
+margin_bottom = 176.0
+text = "Info"
+
+[node name="Quit" type="Button" parent="Menus/GameOver/Items"]
+margin_top = 180.0
+margin_right = 288.0
+margin_bottom = 206.0
+text = "Exit"
+
+[connection signal="pressed" from="Panels/TimeMenu/Items/S0" to="." method="_setPause" binds= [ true ]]
+[connection signal="pressed" from="Panels/TimeMenu/Items/S2" to="." method="_setPause" binds= [ false ]]
+[connection signal="mouse_entered" from="Panels/BuildMenu/Button/Base" to="." method="__BuildMenuMouseEntered"]
+[connection signal="mouse_entered" from="Panels/BuildMenu/Button/Base" to="." method="_showTooltip" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Panels/BuildMenu/Button/Base" to="." method="_hideTooltip"]
+[connection signal="pressed" from="Panels/BuildMenu/Button/Base" to="." method="_onBuildButtonPressed" binds= [ 1 ]]
+[connection signal="mouse_entered" from="Panels/BuildMenu/Button/Mine" to="." method="__BuildMenuMouseEntered"]
+[connection signal="mouse_entered" from="Panels/BuildMenu/Button/Mine" to="." method="_showTooltip" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Panels/BuildMenu/Button/Mine" to="." method="_hideTooltip"]
+[connection signal="pressed" from="Panels/BuildMenu/Button/Mine" to="." method="_onBuildButtonPressed" binds= [ 2 ]]
+[connection signal="mouse_entered" from="Panels/BuildMenu/Button/Tower" to="." method="__BuildMenuMouseEntered"]
+[connection signal="mouse_entered" from="Panels/BuildMenu/Button/Tower" to="." method="_showTooltip" binds= [ 3 ]]
+[connection signal="mouse_exited" from="Panels/BuildMenu/Button/Tower" to="." method="_hideTooltip"]
+[connection signal="pressed" from="Panels/BuildMenu/Button/Tower" to="." method="_onBuildButtonPressed" binds= [ 3 ]]
+[connection signal="mouse_entered" from="Panels/BuildMenu/Button/Wall" to="." method="__BuildMenuMouseEntered"]
+[connection signal="mouse_entered" from="Panels/BuildMenu/Button/Wall" to="." method="_showTooltip" binds= [ 4 ]]
+[connection signal="mouse_exited" from="Panels/BuildMenu/Button/Wall" to="." method="_hideTooltip"]
+[connection signal="pressed" from="Panels/BuildMenu/Button/Wall" to="." method="_onBuildButtonPressed" binds= [ 4 ]]
+[connection signal="pressed" from="Menus/Main/Items/Continue" to="." method="_pauseMenu"]
+[connection signal="pressed" from="Menus/Main/Items/Play" to="." method="showNewGameSettings"]
+[connection signal="pressed" from="Menus/Main/Items/Howto" to="." method="_showHowto"]
+[connection signal="toggled" from="Menus/Main/Items/Sound" to="." method="_toggleSounds"]
+[connection signal="pressed" from="Menus/Main/Items/Info" to="." method="_showInfo"]
+[connection signal="pressed" from="Menus/Main/Items/Quit" to="." method="_quit"]
+[connection signal="pressed" from="Menus/NewGame/Items/Buttons/Back" to="." method="hideNewGameSettings"]
+[connection signal="pressed" from="Menus/NewGame/Items/Buttons/Start" to="." method="startNewGame"]
+[connection signal="confirmed" from="Menus/AttackInfo" to="." method="closeAttackInfo"]
+[connection signal="popup_hide" from="Menus/AttackInfo" to="." method="closeAttackInfo"]
+[connection signal="pressed" from="Menus/GameOver/Items/Howto" to="." method="_showHowto"]
+[connection signal="pressed" from="Menus/GameOver/Items/Info" to="." method="_showInfo"]
+[connection signal="pressed" from="Menus/GameOver/Items/Quit" to="." method="_quit"]
